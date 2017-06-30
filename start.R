@@ -1,6 +1,6 @@
 # Setting the data
 rm(list = ls()) 
-setwd("/Users/remi_juge/Downloads/code/") 
+setwd("/Users/remi_juge/Documents/Projects/R-tuto-Default") 
 dung<-read.csv("credit.csv") 
 
 #To delete unnecessary rows (but already did in the data table)
@@ -134,7 +134,7 @@ dev.off()
 
 
 ################ ACCURACY CURVES  ##################
-png(filename="Accuracy-cutoff_4_models.png", width=700, height=700)
+png(filename="Accuracy_cutoff_4_models.png", width=700, height=700)
 ## ACCURACY KNN
 acc.perf1 = performance(predknn, measure = "acc")
 plot(acc.perf1, col=2)
@@ -154,7 +154,7 @@ dev.off()
 ############  GAIN CHARTS #####################
 require("ROCR")
 ## GAIN CHART KNN
-png(filename="Gain Chart - ALL together.png", width=700, height=700)
+png(filename="Gain_Chart_All_together.png", width=700, height=700)
 gain.knn = performance(predknn, "tpr", "rpp")
 plot(gain.knn, col=2, lwd=2, main = "Gain charts for 4 models")
 plot(x=c(0, 1), y=c(0, 1), type="l", col="black", lwd=2,
@@ -184,7 +184,7 @@ dev.off()
 
 ############# LIFT CHARTS 4 MODELS ################
 ## LIFT CHART KNN
-png(filename="Lift Chart for 4 models.png", width=700, height=700)
+png(filename="Lift_Chart_4_models.png", width=700, height=700)
 lift.knn = performance(predknn, measure = "lift", x.measure = "rpp")
 plot(lift.knn, col=2, main = "Lift charts for 4 models")   
 abline(0,1)
@@ -247,5 +247,3 @@ library(gridExtra)
 pdf(file = "TABLE.pdf")
 grid.table(table)
 dev.off()
-
-
